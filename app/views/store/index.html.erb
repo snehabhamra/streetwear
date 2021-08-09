@@ -19,9 +19,14 @@
   <h1>Find your perfect kicks today</h1>
   <p class="lead">Buy and sell only the most coveted sneakers at Unscr!pted, the worlds leading underground footwear marketplace.</p>
   <p class="lead">
-    <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Start Browsing</a>
+    <% if user_signed_in?%>
+    <%= link_to "Start Browsing", products_path, method: :get, class: "nav-link" %>
+    <% else %>
+    <%= link_to "Log In", new_user_session_path, method: :get, class: "nav-link" %>
+    <%end%>
   </p>
 </main>
+     #link needs to be added below the start browsing link above so it links to products feed page = http://localhost:3000/products
 
 
 <footer class="mt-auto text-white-50">
