@@ -1,6 +1,11 @@
-<h1>Editing Product</h1>
 
-<%= render 'form', product: @product %>
-
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<%= form_with(model: @product) do |form| %>
+    <h1 class="heading">Edit Product</h1>
+    <%= render 'form', product: @product %>
+    <%= form.label "Picture" %>
+    <%= form.file_field :picture %>
+    <div class="actions">
+    <%= form.submit %>
+    </div>
+    <%= link_to 'Back', products_path %>
+<% end %>
