@@ -28,6 +28,7 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'jquery-rails'
 gem 'simple_form' 
 gem 'devise'
+gem 'rolify'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

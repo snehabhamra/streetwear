@@ -16,15 +16,11 @@
     <%= f.input :description %>
     <%= f.input :price %>
     <%= f.input :category, collection: ["footwear", "accessories", "menswear", "womenswear"] %>
+    <%= f.file_field :picture %>
   </div>
 
-  <%= f.label "Picture" %>
-    <%= f.file_field :picture %>
-    <div class="actions">
-    </div>
-    <div class="actions">
-    <%= f.submit %>
-    </div>
+  <%= f.submit %>
+
   <%= link_to 'Back', products_path %>
 
 <%end%>
