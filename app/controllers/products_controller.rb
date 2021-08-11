@@ -21,31 +21,29 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    @product = Product.new(product_params)
-    @product.user_id = current_user.id
-    respond_to do |format|
+    @product = Product.create (product_params)
       if @product.save
-        format.html { redirect_to @product, notice: "Product was successfully created." }
-        format.json { render :show, status: :created, location: @product }
+        render :show, status: :created
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        render json: @product.errors, status: :unprocessable_entity
       end
     end
   end
 
+
+
   # PATCH/PUT /products/1 or /products/1.json
-  def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, notice: "Product was successfully updated." }
-        format.json { render :show, status: :ok, location: @product }
+  def edit 
+    @product = Product.edit (product_params)
+      if @product.save
+        render :show, status: :created
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        render json: @product.errors, status: :unprocessable_entity
       end
     end
-  end
+
+
+  
 
   # DELETE /products/1 or /products/1.json
   def destroy
@@ -64,6 +62,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit( :title, :description, :price, :category, :user_id, :picture)
+      params.require(:product).permit(:title, :description, :price, :category, :picture)
     end
-end
+

@@ -1,4 +1,4 @@
 <h1 class="heading">New Product</h1>
-<%= simple_form_for@product do |form| %>
+<%= simple_form_for@product, url: {action: "create"} do |form| %>
     <%= render 'form', product: @product %>
 <% end %>
