@@ -1,11 +1,5 @@
 
-<%= form_with(model: @product) do |form| %>
+<%= simple_form_for@product do |f| %>
     <h1 class="heading">Edit Product</h1>
     <%= render 'form', product: @product %>
-    <%= form.label "Picture" %>
-    <%= form.file_field :picture %>
-    <div class="actions">
-    <%= form.submit %>
-    </div>
-    <%= link_to 'Back', products_path %>
 <% end %>

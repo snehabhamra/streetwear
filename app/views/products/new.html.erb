@@ -1,10 +1,4 @@
 <h1 class="heading">New Product</h1>
-<%= form_with(model: @product) do |form| %>
+<%= simple_form_for@product do |form| %>
     <%= render 'form', product: @product %>
-    <%= form.label "Picture" %>
-    <%= form.file_field :picture %>
-    <div class="actions">
-    <%= form.submit %>
-    </div>
-    <%= link_to 'Back', products_path %>
 <% end %>
