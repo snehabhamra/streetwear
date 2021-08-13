@@ -6,9 +6,8 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.decimal :price
       t.string :category
       t.string :image_url
-      t.references :profile, foreign_key: true
-      t.integer :buyer_id
-      t.integer :seller_id
+      t.integer :buyer_id, optional: true
+      t.integer :seller_id, optional: true
 
       t.timestamps
     end

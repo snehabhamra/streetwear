@@ -1,3 +1,6 @@
+<br>
+<br>
+<br>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -21,11 +24,13 @@
 </p>
 
 <p>
-<% @product.pictures.each do |picture| %>
-  <%= image_tag picture %>
-<% end %>
+  <strong>Image url:</strong>
+  <%= @product.picture %>
 </p>
 
+<br>
+<br>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+

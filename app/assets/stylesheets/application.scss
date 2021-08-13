@@ -38,6 +38,11 @@
     background-color: #fff;
     color: #333;
     margin: 33px; 
+    background-image: url('unsc.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 30%;
+    background-attachment: fixed;
     }
   
   body, p, ol, ul, td {
@@ -117,3 +122,4 @@ div.authorisationbuttons {
   background-color: transparent;
   color: #666666;
 }
+

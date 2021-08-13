@@ -1,4 +1,4 @@
-<%= simple_form_for@product do |f| %>
+<%= simple_form_for @product do |f| %>
   <% if product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -16,11 +16,14 @@
     <%= f.input :description %>
     <%= f.input :price %>
     <%= f.input :category, collection: ["footwear", "accessories", "menswear", "womenswear"] %>
-    <%= f.file_field :picture %>
+    <div class="form-group">
+      <% if product.picture.attached? %>
+        <%= image_tag product.picture, style: "width: 200px; display: block" %>
+      <% end %>
+      <%= f.file_field :picture %>
+    </div>
   </div>
   
-
-  <%= f.submit %>
 
   <%= link_to 'Back', products_path %>
 

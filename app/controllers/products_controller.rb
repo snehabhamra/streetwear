@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :set_product, only: %i[ show edit update delete ]
 
   # GET /products or /products.json
   def index
@@ -16,34 +16,35 @@ class ProductsController < ApplicationController
   end
 
   # GET /products/1/edit
-  def edit
+  def update
   end
 
   # POST /products or /products.json
   def create
-    @product = Product.create (product_params)
-      if @product.save
+    @product = Product.create 
+    @picture = current_user.picture.new(picture_params)
+    @product_id = @product.id 
+      if @product.save && @picture.save
         render :show, status: :created
       else
         render json: @product.errors, status: :unprocessable_entity
       end
+
     end
   end
 
 
-
-  # PATCH/PUT /products/1 or /products/1.json
-  def edit 
-    @product = Product.edit (product_params)
-      if @product.save
-        render :show, status: :created
+  def update
+    respond_to do |format|
+      if @product.update(product_params)
+        format.html { redirect_to @product, notice: "Product was successfully updated." }
+        format.json { render :show, status: :ok, location: @product }
       else
-        render json: @product.errors, status: :unprocessable_entity
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
-
-
-  
+  end
 
   # DELETE /products/1 or /products/1.json
   def destroy
@@ -62,6 +63,5 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:title, :description, :price, :category, :picture)
+      params.require(:product).permit(:title, :description, :price, :category, :image_url, :buyer_id, :seller_id)
     end
-
