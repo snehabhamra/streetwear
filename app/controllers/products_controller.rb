@@ -23,15 +23,14 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    @product = Product.new(product_params)
-    @picture = current_user.picture.new(picture_params)
+    @product = Product.new(params[:id])
     @product_id = @product.id 
-      if @product.save && @picture.save
-        render :show, status: :created
-      else
-        render json: @product.errors, status: :unprocessable_entity
-      end
-
+        if @product.save 
+          format.html {redirect_to products_path(@product), notice: 'Product was successfully listed'}
+          format.json {render :show, status: :created, location: @product}
+        else
+          render json: @product.errors, status: :unprocessable_entity
+        end
     end
   end
 
