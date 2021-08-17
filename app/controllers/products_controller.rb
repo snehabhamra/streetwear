@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update delete ]
+  before_action :set_product, only: %i[ show edit update delete destroy ]
 
   # GET /products or /products.json
   def index
@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
+    @product = Product.find(params[:id])
   end
 
   # GET /products/new
@@ -17,11 +18,12 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def update
+    @product = Product.update
   end
 
   # POST /products or /products.json
   def create
-    @product = Product.create 
+    @product = Product.new(product_params)
     @picture = current_user.picture.new(picture_params)
     @product_id = @product.id 
       if @product.save && @picture.save
@@ -48,11 +50,9 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1 or /products/1.json
   def destroy
-    @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    Product.find(params[:id]).delete
+    @product = Product.delete(params[:id])
+    redirect_to products_path
   end
 
   private
@@ -63,5 +63,5 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:title, :description, :price, :category, :image_url, :buyer_id, :seller_id)
+      params.permit(:title, :description, :price, :category, :image_url, :buyer_id, :seller_id)
     end

@@ -229,6 +229,7 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
+  aws-sdk-s3
   bootsnap (>= 1.4.4)
   bootstrap (~> 4.5.2)
   byebug
@@ -247,11 +248,13 @@ DEPENDENCIES
   simple_form
   spring
   sprockets-rails
+  stripe
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
+
 
 RUBY VERSION
    ruby 2.7.3p183

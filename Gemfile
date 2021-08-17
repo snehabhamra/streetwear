@@ -29,6 +29,8 @@ gem 'jquery-rails'
 gem 'simple_form' 
 gem 'devise'
 gem 'rolify'
+gem "aws-sdk-s3", require: false
+gem 'stripe'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
