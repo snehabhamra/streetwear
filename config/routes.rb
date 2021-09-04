@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/products/new", to: "products#new"
   get "/products/:id/edit", to: "products#edit"
   put "/products/:id", to: "products#update"
+  patch "/products/:id", to: "products#update"
   get "/products/:id", to: "products#show"
   delete "/products/:id", to: "products#destroy"
 end

@@ -2,7 +2,6 @@
   <% if product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
       <ul>
         <% product.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -22,9 +21,11 @@
       <% end %>
       <%= f.file_field :picture %>
     </div>
+    <%= f.submit %>
+    <br>
+    <%= link_to 'Back', products_path %>
   </div>
   
-
-  <%= link_to 'Back', products_path %>
+  
 
 <%end%>

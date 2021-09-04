@@ -13,29 +13,32 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
+    @product = Product.new(product_params)
   end
 
   # GET /products/1/edit
-  def update
-    @product = Product.update
-  end
+ 
+ 
 
   # POST /products or /products.json
   def create
-    @product = Product.new(params[:id])
+    @product = Product.new(product_params)
     @product_id = @product.id 
+    respond_to do |format|
         if @product.save 
-          format.html {redirect_to products_path(@product), notice: 'Product was successfully listed'}
+          format.html {redirect_to @product, notice: "Product was successfully listed." }
           format.json {render :show, status: :created, location: @product}
         else
-          render json: @product.errors, status: :unprocessable_entity
+          format.json {render json: @product.errors, status: :unprocessable_entity }
         end
+    end
     end
   end
 
 
   def update
+    @product = Product.update(product_params)
+    @product_id = @product.id 
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: "Product was successfully updated." }
