@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   patch "/products/:id", to: "products#update"
   get "/products/:id", to: "products#show"
   delete "/products/:id", to: "products#destroy"
+  get "/products/:id" => :destroy, to: "products#index"
 end
 
 
