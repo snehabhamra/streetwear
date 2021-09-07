@@ -9,7 +9,7 @@
 </p>
 
 <p>
-  <strong>:</strong>
+  <strong>Description:</strong>
   <%= @product.description %>
 </p>
 
@@ -24,7 +24,8 @@
 </p>
 
 <p>
-<% @product.pictures.each do |picture| %>
+  <strong>Picture:</strong>
+<% @product.picture.each do |picture| %>
   <%= image_tag picture %>
 <% end %>
 </p>

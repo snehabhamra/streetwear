@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit create update delete destroy ]
+  before_action :set_product, only: %i[ show edit update delete destroy ]
 
   # GET /products or /products.json
   def index
@@ -13,12 +13,13 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.find(params[:id])
+    @product = Product.new
+    
   end
 
   # GET /products/1/edit
   def update
-    @product = Product.update(product_params)
+    @product = Product.find(params[:id])
     @product_id = @product.id 
     respond_to do |format|
       if @product.update(product_params)
@@ -34,7 +35,7 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    @product = Product.new(product_params)
+    @product = Product.create(product_params)
     @product_id = @product.id 
     respond_to do |format|
         if @product.save 
@@ -45,6 +46,8 @@ class ProductsController < ApplicationController
         end
     end
   end
+
+
 
   # DELETE /products/1 or /products/1.json
   def destroy
@@ -67,7 +70,7 @@ class ProductsController < ApplicationController
   
     # Only allow a list of trusted parameters through.
     def product_params
-      params.permit(:title, :description, :price, :category, :image_url, :buyer_id, :seller_id)
+      params.require(:product).permit(:title, :description, :price, :category, :image_url, :buyer_id, :seller_id)
     end
   
 end
