@@ -25,7 +25,7 @@
 
 <p class="product img">
   <strong>Picture:</strong>
-  <%= @product.image_url if @product.image_url.attached? %>
+  <%= image_tag @product.image_url, class:"product-img" if @product.image_url.has_one_attached?%>
 </p>
 
 <br>

@@ -1,34 +1,27 @@
 <p id="notice"><%= notice %></p>
 
+<div class="container">
+
 <h1>Products</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Category</th>
-      <th>Actions</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+    <div class="card-deck">
     <% @products.each do |product| %>
-      <tr>
-        <td><%= product.title %></td>
-        <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <td><%= product.category %></td>
-        <td><%= link_to 'Show', product_path(product), method: :show %></td>
-        <td><%= link_to 'Edit', edit_product_path(product), method: :edit %></td>
-        <td><%= button_to 'Destroy', product_path(product), :method => :delete %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+        <div class="card mb-4" style="min-width: 18rem;">
+          <%= image_tag product.image_url, class:"product-img" if product.image_url.has_one_attached?%>
+          <div class="card-body">
+            <h5 class="card-title"><%= product.title %>
+            <h6 class="card-subtitle mb-2 text-muted"><%= product.description %>
+            <p class="card-text mt-2"><%= product.price %>
+            <p class="card-text"><small class="text-muted"><%= product.category %>
+            <%= link_to 'Show', product_path(product), method: :show %></td>
+            <%= link_to 'Edit', edit_product_path(product), method: :edit %></td>
+            <%= button_to 'Destroy', product_path(product), :method => :delete %></td>
+          </div>
+        </div>
+    <% end %>
+    </div>
+</div>
 
 <%= link_to "New Product", new_product_path, method: :get %>
+
+
