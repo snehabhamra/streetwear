@@ -15,7 +15,7 @@
     <%= f.input :description %>
     <%= f.input :price %>
     <%= f.input :category, collection: ["footwear", "accessories", "menswear", "womenswear"] %>
-    <%= f.file_field :picture %>
+    <%= f.file_field :picture, accept: 'image/png, image/jpg, image/jpeg' %>
     <%= f.submit %>
     <br>
     <%= link_to 'Back', products_path %>

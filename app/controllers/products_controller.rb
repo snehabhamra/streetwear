@@ -14,7 +14,6 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    
   end
 
   # GET /products/1/edit
@@ -66,6 +65,10 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
+    end
+
+    def set_products
+      @products = Product.all
     end
   
     # Only allow a list of trusted parameters through.

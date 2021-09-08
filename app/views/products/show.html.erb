@@ -25,8 +25,8 @@
 
 <p>
   <strong>Picture:</strong>
-<% @product.picture.each do |picture| %>
-  <%= image_tag picture %>
+<% @product.image_url.each do |image_url| %>
+  <%= image_tag image_url %>
 <% end %>
 </p>
 
