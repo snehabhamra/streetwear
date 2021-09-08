@@ -23,11 +23,9 @@
   <%= @product.category %>
 </p>
 
-<p>
+<p class="product img">
   <strong>Picture:</strong>
-<% @product.image_url.each do |image_url| %>
-  <%= image_tag image_url %>
-<% end %>
+  <%= @product.image_url if @product.image_url.attached? %>
 </p>
 
 <br>
