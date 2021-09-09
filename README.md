@@ -1,6 +1,6 @@
 # README
 
-Unscr!pted is a marketplace app developed with Ruby On Rails, allowing for streetwear enthusiasts in Australia to connect and buy or sell clothing. App is not complete due to terminal errors in development process - please see this as what I was able to complete after multiple re-do's. 
+Unscr!pted is a marketplace app developed with Ruby On Rails, allowing for streetwear enthusiasts in Australia to connect and buy or sell clothing. 
 
 INDEX
 
@@ -11,6 +11,7 @@ INDEX
 	HTML 5
 	SCSS
 	Javascript
+	
 
 * Third Party Tech
 
@@ -18,17 +19,24 @@ INDEX
 		https://github.com/snehabhamra/streetwear
 	Trello
 		https://trello.com/b/G65J8Pxo/t2a2-marketplace-project
+	AWS S3 for active storage and image uploading
+	Stripe payment gateway 
+	Heroku for deployment
+		https://dashboard.heroku.com/apps/streetwear-app
 
-* Gems
+* Custom Gems
 
 	gem 'bootstrap', '~> 4.5.2'
 	gem 'sprockets-rails', :require => 'sprockets/railtie'
 	gem 'jquery-rails'
+	gem 'jquery-ui-rails'
+	gem 'jquery-turbolinks'
 	gem 'simple_form' 
 	gem 'devise'
 	gem 'rolify'
 	gem "aws-sdk-s3", require: false
 	gem 'stripe'
+	gem "paperclip", "~> 6.0.0"
 
 * Local Installation
 
@@ -64,6 +72,14 @@ INDEX
 
 	Users can search for products.
 
+*  Describe your project’s models in terms of the relationships (active record associations) they have with each other
+
+	User: has_many associations with both image_urls and products
+
+	Product: belongs_to :buyer, :optional => true
+    belongs_to :seller, :optional => true
+	belongs_to :user
+    has_many_attached :image_urls
 
 *Sitemap
 [](sitemap.jpeg)
