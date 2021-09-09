@@ -18,7 +18,7 @@ INDEX
 	Github	
 		https://github.com/snehabhamra/streetwear
 	Trello
-		https://trello.com/b/G65J8Pxo/t2a2-marketplace-project
+		https://trello.com/b/v4N2zKs5/marketplace-rails-app
 	AWS S3 for active storage and image uploading
 	Stripe payment gateway 
 	Heroku for deployment
@@ -76,23 +76,32 @@ INDEX
 
 	User: has_many associations with both image_urls and products
 
-	Product: belongs_to :buyer, :optional => true
-    belongs_to :seller, :optional => true
-	belongs_to :user
-    has_many_attached :image_urls
+	Product: belongs to buyer, seller and user models all made optional as errors were otherwise being thrown. Also 		has_many_attached :image_urls
+
+* Discuss the database relations to be implemented
+
+	A user is required to log into the website itself, prior to which the database relations cannot be viewed or utilised. From there a user can create a product to be sold on the website for which they may also upload an image to be attached.There are several form fields to be inputted into for a product to be successfully listed, include title, price, description and category - if not inputted the product will not post. 
+	
+	Users can also browse and purchase products available to be sold by other users on the website. 
+
+* Provide your database schema design
 
 *Sitemap
 [](sitemap.jpeg)
 
-*Screenshots
+* Screenshots
 
 Please see screenshots in docs folder
 
-*Mockups
+* Mockups
 
 Please see mockups in ppt folder in the presentation file.
 
-*Features
+* Describe the way tasks are planned and tracked in your project
+
+I handled the planning and tracking of this project very poorly from start to finish. Being stuck in development hell entailed a lot of tutorial watching originally, where I sent a lot of time watching and rewatching the videos on Canvas along with videos on youtube to get an idea of how to structure my app. I then attempted to remake several iterations of an app utilising the methods found online to no avail. From here I decided to simply go ahead and start my app process, which itself was marred and laden with errors that I was unable to debug on time for app submission. Initially I planned the tasks for my app around 
+
+* Features
 
 Unscr!pted allows users to create secure accounts through the 'Devise' gem.
 
