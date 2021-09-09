@@ -25,7 +25,11 @@
   <%= @product.category %>
 </p>
 
-<button data-stripe="payment", class="btn btn-sm btn-outline-secondary">Proceed To Payment</button>
+<button data-stripe="payment", class="btn btn-sm btn-outline-secondary">Purchase</button>
+<br>
+<%= link_to 'Edit', edit_product_path(@product) %> 
+<%= link_to 'Back', products_path %>
+
 
 <div class="card mb-4" style="max-width: 25rem;">
 <% if @product.image_url %>
@@ -34,9 +38,6 @@
 </div>
 
 <br>
-
-<%= link_to 'Edit', edit_product_path(@product) %> 
-<%= link_to 'Back', products_path %>
 
 </main>
 
