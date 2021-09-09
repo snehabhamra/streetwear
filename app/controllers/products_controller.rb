@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
 
 
 
-  # DELETE /products/1 or /products/1.json
+  # Allows product to be deleted and then redirects to index page of shop
   def destroy
     @product = Product.find(params[:id]).delete
     respond_to do |format|
@@ -76,6 +76,8 @@ class ProductsController < ApplicationController
       params.require(:product).permit(:title, :description, :price, :category, :image_url, :buyer_id, :seller_id)
     end
   
+
+    #stripe payment feature 
     def generate_stripe_session
       session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
