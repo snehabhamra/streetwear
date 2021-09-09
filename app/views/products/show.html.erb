@@ -23,10 +23,9 @@
   <%= @product.category %>
 </p>
 
-<p class="product img">
-  <strong>Picture:</strong>
-  <%= image_tag @product.image_url, class:"product-img" if @product.image_url.has_one_attached?%>
-</p>
+<% @product.image_urls.each do |image_url| %>
+  <%= image_tag image_url %>
+<% end %>
 
 <br>
 <br>

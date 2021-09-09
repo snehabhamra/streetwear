@@ -31,6 +31,7 @@ gem 'devise'
 gem 'rolify'
 gem "aws-sdk-s3", require: false
 gem 'stripe'
+gem "paperclip", "~> 6.0.0"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

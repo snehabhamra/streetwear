@@ -4,5 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :timeoutable
   has_many :products
-  has_many_attached :image_url
+  has_many_attached :image_urls
 end
