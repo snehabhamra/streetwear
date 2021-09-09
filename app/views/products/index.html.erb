@@ -16,10 +16,10 @@
             <h6 class="card-subtitle mb-2 text-muted"><%= product.description %>
             <p class="card-text mt-2"><%= product.price %>
             <p class="card-text"><small class="text-muted"><%= product.category %>
-            <%= link_to 'Show', product_path(product), method: :show %></td>
-            <link_to 'Purchase' data-stripe="payment", class="btn btn-sm btn-outline-secondary">Purchase</button>
-            <%= link_to 'Edit', edit_product_path(product), method: :edit %></td>
-            <%= button_to 'Destroy', product_path(product), :method => :delete %></td>
+            <br>
+            <strong><%= link_to 'Show', product_path(product), method: :show %></td><strong>
+            <strong><%= link_to 'Edit', edit_product_path(product), method: :edit %></td></strong>
+            <%= button_to 'Delete', product_path(product), :method => :delete %></td>
           </div>
         </div>
     <% end %>

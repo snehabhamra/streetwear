@@ -76,4 +76,28 @@ class ProductsController < ApplicationController
       params.require(:product).permit(:title, :description, :price, :category, :image_url, :buyer_id, :seller_id)
     end
   
+    def generate_stripe_session
+      session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      customer_email: current_user.email,
+      line_items: [{
+          name: @product.title,
+          description: @product.description,
+          amount: @product.price,
+          currency: 'aud',
+          quantity: 1,
+      }],
+      payment_intent_data: {
+          metadata: {
+              user_id: current_user.id,
+              product_id: @product.id
+          }
+      },
+      success_url: "#{root_url}payments/success?productId=#{product.id}",
+      cancel_url: "#{root_url}products"
+    )
+
+    @session_id = session.id
+    end
+
 end

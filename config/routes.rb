@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   delete "/products/:id", to: "products#destroy"
   get "/products/:id" => :destroy, to: "products#index"
   get "/payments/success", to: "payments#success"
+  get "/payment", to: "pages#payment", as: "payment"
 end
 
 
