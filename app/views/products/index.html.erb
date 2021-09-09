@@ -2,10 +2,12 @@
 
 <div class="container">
 
+
 <h1>Products</h1>
+<%= link_to "New Product", new_product_path, method: :get %>
     <div class="card-deck">
     <% @products.each do |product| %>
-        <div class="card mb-4" style="min-width: 18rem;">
+        <div class="card" style="width: 18rem; max-height: 50%; ">
           <% if product.image_url %>
             <%= image_tag product.image_url %>
           <% end %>
@@ -15,6 +17,7 @@
             <p class="card-text mt-2"><%= product.price %>
             <p class="card-text"><small class="text-muted"><%= product.category %>
             <%= link_to 'Show', product_path(product), method: :show %></td>
+            <link_to 'Purchase' data-stripe="payment", class="btn btn-sm btn-outline-secondary">Purchase</button>
             <%= link_to 'Edit', edit_product_path(product), method: :edit %></td>
             <%= button_to 'Destroy', product_path(product), :method => :delete %></td>
           </div>
@@ -23,6 +26,5 @@
     </div>
 </div>
 
-<%= link_to "New Product", new_product_path, method: :get %>
 
 

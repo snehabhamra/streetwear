@@ -1,3 +1,5 @@
+<main>
+
 <br>
 <br>
 <br>
@@ -33,6 +35,24 @@
 <br>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Purchase' %> |
+<button data-stripe="payment", class="btn btn-sm btn-outline-secondary">Purchase</button>
 <%= link_to 'Back', products_path %>
 
+</main>
+
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+  document
+    .querySelector("[data-stripe='payment']")
+    .addEventListener("click", () => {
+      const stripe = Stripe(
+        "<%= Rails.application.credentials.dig(:stripe, :public_key) %>"
+      );
+
+      stripe.redirectToCheckout({
+        sessionId: "<%= @session_id %>"
+      });
+    });
+</script>

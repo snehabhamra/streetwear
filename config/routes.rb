@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :products, only: [:show, :new, :destroy, :create, :update, :index, :edit, :delete] 
   resources :pictures
+  resources :charges, only: [:new, :create]
   root to: 'store#index' 
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   get "/products/:id", to: "products#show"
   delete "/products/:id", to: "products#destroy"
   get "/products/:id" => :destroy, to: "products#index"
+  get "/payments/success", to: "payments#success"
 end
 
 
