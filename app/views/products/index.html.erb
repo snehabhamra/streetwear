@@ -5,8 +5,10 @@
 <h1>Products</h1>
     <div class="card-deck">
     <% @products.each do |product| %>
-        <div class="card mb-4" style="min-width: 18rem; ">
-          <%= image_tag product.image_url if product.image_url?%>
+        <div class="card mb-4" style="min-width: 18rem;">
+          <% if product.image_url %>
+            <%= image_tag product.image_url %>
+          <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= product.title %>
             <h6 class="card-subtitle mb-2 text-muted"><%= product.description %>

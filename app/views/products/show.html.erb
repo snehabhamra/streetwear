@@ -23,9 +23,11 @@
   <%= @product.category %>
 </p>
 
-<% @product.image_urls.each do |image_url| %>
-  <%= image_tag image_url %>
+<div class="card mb-4" style="max-width: 25rem;">
+<% if @product.image_url %>
+  <%= image_tag @product.image_url %>
 <% end %>
+</div>
 
 <br>
 <br>
